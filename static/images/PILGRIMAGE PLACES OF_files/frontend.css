@@ -1,0 +1,266 @@
+/* Timeline element styles */
+.mgt-timeline-wrapper {
+    position: relative;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    position: relative;
+    margin-bottom: 0!important;
+    padding-bottom: 30px;
+}
+.mgt-timeline-wrapper.mgt-timeline-date-left {
+    flex-direction: row-reverse;
+}
+.mgt-timeline-wrapper.mgt-timeline-date-left .mgt-timeline-icon-wrapper {
+    margin: 0 -40px 0 30px;
+}
+.mgt-timeline-wrapper.mgt-timeline-date-left .mgt-timeline-date {
+    text-align: right;
+}
+.mgt-timeline-wrapper.mgt-timeline-date-left .mgt-timeline-details-pointer {
+    left: -10px;
+    right: auto;
+    border-left: none;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #F5F5F5;
+}
+.mgt-timeline-wrapper.mgt-timeline-pointer-style-line .mgt-timeline-details-pointer,
+.mgt-timeline-wrapper.mgt-timeline-pointer-style-dottedline .mgt-timeline-details-pointer,
+.mgt-timeline-wrapper.mgt-timeline-pointer-style-dashedline .mgt-timeline-details-pointer {
+    top: 35px;
+    width: 60px;
+    height: 1px;
+    left: -60px;
+    border-left: none!important;
+    border-right: none!important;
+    border-top: none!important;
+    border-bottom: 2px solid #234AA5;
+}
+.mgt-timeline-wrapper.mgt-timeline-date-right.mgt-timeline-pointer-style-line .mgt-timeline-details-pointer,
+.mgt-timeline-wrapper.mgt-timeline-date-right.mgt-timeline-pointer-style-dottedline .mgt-timeline-details-pointer,
+.mgt-timeline-wrapper.mgt-timeline-date-right.mgt-timeline-pointer-style-dashedline .mgt-timeline-details-pointer {
+    left: auto;
+    right: -60px;
+}
+.mgt-timeline-wrapper.mgt-timeline-pointer-style-dottedline .mgt-timeline-details-pointer {
+    border-style: dotted;
+}
+.mgt-timeline-wrapper.mgt-timeline-pointer-style-dashedline .mgt-timeline-details-pointer {
+    border-style: dashed;
+}
+.mgt-timeline-wrapper.mgt-timeline-pointer-style-disable .mgt-timeline-details-pointer {
+    display: none;
+}
+.mgt-timeline-wrapper.text-left .mgt-timeline-details {
+    text-align: left;
+}
+.mgt-timeline-wrapper.text-right .mgt-timeline-details {
+    text-align: right;
+}
+.mgt-timeline-wrapper.text-center .mgt-timeline-details {
+    text-align: center;
+}
+.mgt-timeline-wrapper .mgt-timeline-details-wrapper {
+    width: 50%;
+    position: relative;
+}
+.mgt-timeline-wrapper .mgt-timeline-details {
+    background-color: #F5F5F5;
+    padding: 45px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+.mgt-timeline-wrapper.mgt-timeline-date-right .mgt-timeline-details {
+    margin-right: 70px;
+}
+.mgt-timeline-wrapper .mgt-timeline-details iframe {
+    width: 100%;
+    height: 260px;
+    margin-top: 15px;
+}
+.mgt-timeline-wrapper.mgt-timeline-date-left .mgt-timeline-details {
+    margin-left: 70px;
+}
+.mgt-timeline-wrapper.mgt-timeline-border-style-rounded .mgt-timeline-details {
+    border-radius: 10px;
+}
+.mgt-timeline-wrapper.mgt-timeline-style-bordered .mgt-timeline-details {
+    background: transparent;
+    border: 2px solid #F5F5F5;
+}
+.mgt-timeline-wrapper.mgt-timeline-style-doublebordered .mgt-timeline-details {
+    background: transparent;
+    border: 3px double #F5F5F5;
+}
+.mgt-timeline-wrapper.mgt-timeline-style-nobg .mgt-timeline-details {
+    background: transparent;
+    padding: 0;
+}
+.mgt-timeline-wrapper.mgt-timeline-style-nobg .mgt-timeline-details-pointer {
+    display: none;
+}
+.mgt-timeline-wrapper.mgt-timeline-style-nobg .mgt-timeline-details > a + .mgt-timeline-image {
+    margin-top: 20px;
+}
+.mgt-timeline-wrapper .mgt-timeline-details-pointer {
+    display: block;
+    position: absolute;
+    top: 25px;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-right: none;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #F5F5F5;
+}
+.mgt-timeline-wrapper h5.mgt-timeline-title {
+    font-size: 22px;
+    line-height: 1em;
+    margin-top: 0!important;
+    margin-bottom: 10px;
+    font-weight: normal;
+    color: #000000;
+}
+.mgt-timeline-wrapper .mgt-timeline-text {
+    color: #212529;
+}
+.mgt-timeline-wrapper a {
+    text-decoration: none;
+}
+.mgt-timeline-wrapper .mgt-timeline-icon-wrapper {
+    font-size: 40px;
+    line-height: 78px;
+    background-color: #234AA5;
+    width: 80px;
+    height: 80px;
+    display: table;
+    margin: 0 auto;
+    color: #ffffff;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    cursor: default;
+    margin: 0 30px 0 -40px;
+}
+.mgt-timeline-wrapper .mgt-timeline-icon-wrapper a,
+.mgt-timeline-wrapper .mgt-timeline-icon-wrapper a:visited,
+.mgt-timeline-wrapper .mgt-timeline-icon-wrapper a:focus {
+    color: #ffffff;
+}
+.mgt-timeline-wrapper.mgt-timeline-border-circle .mgt-timeline-icon-wrapper,
+.mgt-timeline-wrapper.mgt-timeline-border-circle .mgt-timeline-icon-wrapper:after {
+    border-radius: 50%;
+}
+.mgt-timeline-wrapper.mgt-timeline-border-rounded .mgt-timeline-icon-wrapper,
+.mgt-timeline-wrapper.mgt-timeline-border-rounded .mgt-timeline-icon-wrapper:after {
+    border-radius: 5px;
+}
+.mgt-timeline-wrapper .mgt-timeline-icon-wrapper .mgt-timeline-icon i:before {
+    display: block;
+    width: 100%;
+}
+.mgt-timeline-wrapper .mgt-timeline-icon-wrapper .mgt-timeline-icon {
+    position: relative;
+    z-index: 15;
+}
+.mgt-timeline-wrapper .mgt-timeline-icon-wrapper .mgt-timeline-icon .vc-material {
+    line-height: inherit;
+}
+.mgt-timeline-wrapper.mgt-timeline-date-left .mgt-timeline-icon-wrapper.mgt-timeline-icon-disable {
+    margin: 26px -10px 0 30px;
+}
+.mgt-timeline-wrapper .mgt-timeline-icon-wrapper.mgt-timeline-icon-disable {
+    width: 20px;
+    height: 20px;
+    margin: 26px 30px 0 -10px;
+}
+.mgt-timeline-wrapper .mgt-timeline-date .mgt-timeline-date-year {
+    font-size: 40px;
+    line-height: 40px;
+}
+.mgt-timeline-wrapper .mgt-timeline-date .mgt-timeline-date-month {
+    color: #234AA5;
+    font-size: 16px;
+    margin-top: 5px;
+}
+.mgt-timeline-wrapper.mgt-timeline-dots-none:after {
+    display: none;
+}
+.mgt-timeline-wrapper:before {
+    background-color: #234AA5;
+    content: "";
+    margin-left: -1px;
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 2px;
+    left: 50%;
+    top: 0;
+}
+.mgt-timeline-wrapper.mgt-timeline-dots-bottom:before  {
+    top: 40px;
+}
+.mgt-timeline-wrapper.mgt-timeline-dots-none:before {
+    display: none;
+}
+.mgt-timeline-wrapper.mgt-timeline-dots-both {
+    padding-top: 30px;
+}
+.mgt-timeline-wrapper.mgt-timeline-dots-top {
+    padding-top: 30px;
+}
+.mgt-timeline-wrapper.mgt-timeline-dots-top.mgt-timeline-icon-disable:before {
+    height: 56px;
+}
+.mgt-timeline-wrapper.mgt-timeline-dots-top:before {
+    height: 30px;
+}
+.mgt-timeline-wrapper.mgt-timeline-shadow:hover .mgt-timeline-icon-wrapper {
+    box-shadow: 0px 9px 25px 0px rgba(0,0,0,0.15);
+    transform: translate3d(0px, -6px, 0px);
+    -moz-transform: translate3d(0px, -6px, 0px);
+    -webkit-transform: translate3d(0px, -6px, 0px);
+}
+.mgt-timeline-wrapper.mgt-timeline-shadow .mgt-timeline-icon-wrapper {
+    transition: all 0.3s ease-in-out 0s;
+}
+.mgt-timeline-wrapper .mgt-timeline-image {
+    margin-top: 30px;
+}
+.mgt-timeline-wrapper .mgt-timeline-image img {
+    max-width: 100%;
+    height: auto;
+}
+@media (max-width: 979px)  {
+    .mgt-timeline-wrapper {
+        flex-wrap: wrap;
+    }
+    .mgt-timeline-wrapper.mgt-timeline-date-left {
+        flex-direction: row;
+    }
+    .mgt-timeline-wrapper .mgt-timeline-details {
+        margin: 30px 0 0 0!important;
+    }
+    .mgt-timeline-wrapper .mgt-timeline-details-pointer,
+    .mgt-timeline-wrapper:before {
+        display: none;
+    }
+    .mgt-timeline-wrapper .mgt-timeline-date {
+        order: 1;
+        text-align: left!important;
+    }
+    .mgt-timeline-wrapper .mgt-timeline-icon-wrapper {
+        order: 0;
+        margin-left: 0!important;
+        margin-right: 30px!important;
+    }
+    .mgt-timeline-wrapper .mgt-timeline-details-wrapper {
+        order: 2;
+        width: 100%;
+    }
+}

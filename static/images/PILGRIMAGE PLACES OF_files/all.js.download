@@ -1,0 +1,196 @@
+jQuery(document).ready(function($) {
+  $('.tour-slider').owlCarousel({
+	loop: false,
+	margin: 10,
+	nav: true,
+	autoplay:true, 
+	autoplayTimeout:3000,
+	autoplayHoverPause:true,
+	responsiveClass: true,
+	responsive: {
+	  0: {
+		items: 2,
+		loop: true
+	  },
+	  600: {
+		items: 4,
+		loop: true
+	  },
+	  1000: {
+		items: 5
+	  }
+	}
+  })
+});
+
+jQuery(document).ready(function($) {
+  $('.cerslider').owlCarousel({
+	loop: true,
+	margin: 10,
+	nav: true,
+	autoplay:true, 
+	autoplayTimeout:3000,
+	autoplayHoverPause:true,
+	responsiveClass: true,
+	responsive: {
+	  0: {
+		items: 2,
+		loop: true
+	  },
+	  600: {
+		items: 3,
+		loop: true
+	  },
+	  1000: {
+		items: 5
+	  }
+	}
+  })
+});
+
+
+
+
+jQuery(document).ready(function($) {
+  $('.tour-sing-slider').owlCarousel({
+	loop: false,
+	nav: true,
+	autoplay:true,
+	autoplayTimeout:3000,
+	autoplayHoverPause:true,
+	responsiveClass: true,
+	responsive: {
+	  0: {
+		items: 1,
+	  },
+	  600: {
+		items: 1
+	  },
+	  1000: {
+		items: 1
+	  }
+	}
+  })
+}) ;
+
+
+jQuery(document).ready(function($) {
+  $('.topdels').owlCarousel({
+	loop: false,
+	nav: true,	
+	margin:10,
+	//autoplay:true,
+	//autoplayTimeout:3000,
+	//autoplayHoverPause:true,
+	responsiveClass: true,
+	responsive: {
+	  0: {
+		items: 1,
+		loop: true
+	  },
+	  600: {
+		items: 2
+	  },
+	  1000: {
+		items: 3
+	  }
+	}
+  })
+}) ;
+
+jQuery(document).ready(function($) {
+  $('.whyscslider').owlCarousel({
+	loop: false,
+	nav: true,
+	margin:10,
+	//autoplay:true,
+	//autoplayTimeout:3000,
+	//autoplayHoverPause:true,
+	responsiveClass: true,
+	responsive: {
+	  0: {
+		items: 2,
+		loop: true
+	  },
+	  600: {
+		items: 3
+	  },
+	  1000: {
+		items: 4
+	  }
+	}
+  })
+}) ;
+jQuery(document).ready(function($) {
+  $('.tourslider').owlCarousel({
+	loop: false,
+	nav: true,	
+	margin:10,
+	//autoplay:true,
+	//autoplayTimeout:3000,
+	//autoplayHoverPause:true,
+	responsiveClass: true,
+	responsive: {
+	  0: {
+		items: 1,
+		loop: true
+	  },
+	  600: {
+		items: 2
+	  },
+	  1000: {
+		items: 4
+	  }
+	}
+  })
+}) ;
+jQuery(document).ready(function($) {
+  $('.chephfligt').owlCarousel({
+	loop: false,
+	nav: true,	
+	margin:10,
+	//autoplay:true,
+	//autoplayTimeout:3000,
+	//autoplayHoverPause:true,
+	responsiveClass: true,
+	responsive: {
+	  0: {
+		items: 1,
+		loop: true
+	  },
+	  600: {
+		items: 2
+	  },
+	  1000: {
+		items: 4
+	  }
+	}
+  })
+}) ;
+
+jQuery(document).ready(function($) {
+  $('.prtnslider').owlCarousel({
+	loop: false,
+	nav: true,	
+	margin:10,
+	//autoplay:true,
+	//autoplayTimeout:3000,
+	//autoplayHoverPause:true,
+	responsiveClass: true,
+	responsive: {
+	  0: {
+		items: 1,
+		loop: true
+	  },
+	  600: {
+		items: 2
+	  },
+	  1000: {
+		items: 4
+	  }
+	}
+  })
+}) ;
+
+
+        

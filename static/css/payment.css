@@ -1,0 +1,87 @@
+.payment .book-form {
+   padding: 2rem;
+   background: var(--light-bg);
+ }
+ 
+ .payment .book-form .flex {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 2rem;
+ }
+ 
+ .payment .book-form .flex .inputBox {
+   flex: 1 1 41rem;
+ }
+ 
+ .payment .book-form .flex .inputBox input {
+   width: 100%;
+   padding: 1.2rem 1.4rem;
+   font-size: 1.6rem;
+   color: var(--light-black);
+   text-transform: none;
+   margin-top: 1.5rem;
+   border: var(--border);
+ }
+ 
+ .payment .book-form .flex .inputBox input:focus {
+   background: var(--black);
+   color: var(--white);
+ }
+ 
+ .payment .book-form .flex .inputBox input:focus::placeholder {
+   color: var(--light-white);
+ }
+ 
+ .payment .book-form .flex .inputBox span {
+   font-size: 1.5rem;
+   color: var(--light-black);
+ }
+ 
+ .payment .book-form .flex .inputBox select{
+   width: 100%;
+   padding: 1.2rem 1.4rem;
+   font-size: 1.6rem;
+   color: var(--light-black);
+   text-transform: none;
+   margin-top: 1.5rem;
+   border: var(--border);
+ }
+ 
+ .payment .book-form .flex .inputBox select option{
+   width: 100%;
+   padding: 1.2rem 1.4rem;
+   font-size: 1.6rem;
+   color: var(--light-black);
+   text-transform: none;
+   margin-top: 1.5rem;
+   border: var(--border);
+ }
+ 
+ .payment .book-form .btn {
+   /* margin-top: 2rem; */
+   display: inline-block;
+   background: var(--black);
+   margin-top: 2rem;
+   margin-left: 40%;
+   color: var(--white);
+   font-size: 1.7rem;
+   padding: 1rem 3rem;
+   cursor: pointer;
+ }
+ .payment .book-form .btn a{
+   color: var(--white);
+ }
+
+.payment .book-form h1{
+   font-size: 32px;
+   margin-top: 2rem;
+   margin-left: 40%;
+}
+
+
+.payment .book-form h2{
+  font-size: 22px;
+  margin-top: 2rem;
+  margin-left: 10%;
+  margin-right: 10%;
+}

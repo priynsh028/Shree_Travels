@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/signup.css">
+<section class="booking">
+ 
+    <!-- <h1 class="heading-title">Register!</h1> -->
+    <div class="form-container">
+    <form action="{% url 'signup' %}" method="post">
+      {% csrf_token %}
+        <h3>register now</h3>
+        <input type="text" name="username" required placeholder="enter your name">
+        <input type="text" name="first_name" required placeholder="enter your first name">
+        <input type="text" name="last_name" required placeholder="enter your last name">
+        <input type="email" name="email" required placeholder="enter your email">
+        <input type="password" name="password" required placeholder="enter your password">
+        <input type="password" name="cpassword" required placeholder="confirm your password">
+        <select name="user_type">
+           <option value="user">user</option>
+           <option value="admin">admin</option>
+        </select>
+        <input type="submit" name="submit" value="register now" class="form-btn">
+        <p>already have an account? <a href="{% url 'login' %}">login now</a></p>
+     </form>
+</div>
+ </section>
+
+
+{% endblock content %}

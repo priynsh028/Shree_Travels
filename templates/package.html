@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="heading" style="background:url(/static/images/header-bg-2.png) no-repeat">
+    <h1>packages</h1>
+ </div>
+<!-- home packages section starts  -->
+<section class="home-packages">
+  <h1 class="heading-title">our packages</h1>
+  <div class="box-container">
+    {% for package in packages %}
+    <div class="box">
+      <div class="image">
+        <img src="{{package.img.url}}" alt="" />
+      </div>
+      <div class="content">
+        <h3>{{package.ptitle}}</h3>
+        <h2>{{package.pdays}} days</h2>
+        <p>Accomodation on double sharing <br> breakfast and dinner at hotel <br> Transfer and sightseeing by pvt vehicle as per program <br> Applicable hotel taxes</p>
+        <a href=""><img src="/static/images/highlight.png" alt="" style="width: 40px" /></a>
+        <a href=""><img src="/static/images/meal.png" alt="" style="width: 40px" /></a>
+        <h1>Starting From</h1>  
+        <h3>{{package.price}}/-INR</h3>
+        {% if user.is_authenticated %}
+        <a href="{% url 'package_detail' package.id %}" class="btn">book now</a>
+        {% else %}
+        <a href="{% url 'signup' %}" class="btn" onclick="openPopup()">book now</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  <div class="load-more">
+    <a href="{% url 'package' %}" class="btn" id="">load more</a>
+  </div>
+</section>
+ <!-- home packages section end  -->
+{% endblock content %}

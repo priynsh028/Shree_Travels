@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- swiper css link  -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+{% if messages %} {% for message in messages %}
+<marquee behavior="scroll" direction="left" scrollamount="15" {{message.tags}}>
+  {{ message }} &nbsp; &nbsp;
+</marquee>
+{% endfor %} {% endif %}
+
+<div class="box">
+  <div class="content">
+    <div class="popup" id="popup1">
+      <h2>Thank You!</h2>
+      <p>Your details has been successfully submitted. Thanks!</p>
+      <button type="button" onclick="closePopup()">OK</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- home section starts  -->
+<section class="home">
+  <div class="swiper home-slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slide" style="background: url(/static/images/home-slide-1.jpg) no-repeat">
+        <div class="content">
+          <span>explore, discover, travel</span>
+          <h3>travel arround the world</h3>
+          <a href="{% url 'package' %}" class="btn">discover more</a>
+        </div>
+      </div>
+
+      <div class="swiper-slide slide" style="background: url(/static/images/home-slide-2.jpg) no-repeat">
+        <div class="content">
+          <span>explore, discover, travel</span>
+          <h3>discover the new places</h3>
+          <a href="{% url 'package' %}" class="btn">discover more</a>
+        </div>
+      </div>
+
+      <div class="swiper-slide slide" style="background: url(/static/images/home-slide-3.jpg) no-repeat">
+        <div class="content">
+          <span>explore, discover, travel</span>
+          <h3>make your tour worthwhile</h3>
+          <a href="{% url 'package' %}" class="btn">discover more</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- home section ends -->
+
+<!-- services section starts  -->
+
+<section class="services">
+  <h1 class="heading-title">our services</h1>
+
+  <div class="box-container">
+    <div class="box">
+      <img src="/static/images/icon-1.png" alt="" />
+      <h3>adventure</h3>
+    </div>
+
+    <div class="box">
+      <img src="/static/images/icon-2.png" alt="" />
+      <h3>tour guide</h3>
+    </div>
+
+    <div class="box">
+      <img src="/static/images/icon-3.png" alt="" />
+      <h3>trekking</h3>
+    </div>
+
+    <div class="box">
+      <img src="/static/images/icon-4.png" alt="" />
+      <h3>camp fire</h3>
+    </div>
+
+    <div class="box">
+      <img src="/static/images/icon-5.png" alt="" />
+      <h3>off road</h3>
+    </div>
+
+    <div class="box">
+      <img src="/static/images/icon-6.png" alt="" />
+      <h3>camping</h3>
+    </div>
+  </div>
+</section>
+
+<!-- services section ends -->
+
+<!-- home about section starts  -->
+
+<section class="home-about">
+  <div class="image">
+    <img src="/static/images/about.png" height="100%" width="100%" alt="" />
+  </div>
+
+  <div class="content">
+    <h3>about us</h3>
+    <p>
+      <b>Started Operating in </b>1985 <br />
+      <b>Head Office:</b>
+      Ahmedabad, Gujarat <br />
+      <b>Total Number of Buses Offered by Shree Travels:</b>250 <br />
+      <b>Types of Bus Services Offered by Shree Travels:</b> Bharat Benz AC
+      sleeper, AC sleeper, non-AC sleeper, Volvo AC, Scania AC seater,
+      non-AC seater. <br />
+
+      <b>Popular routes served by Shree Travels:</b> Rajkot-Ahmedabad,
+      Ahmedabad-Gandhidham, Adipur-Ahmedabad, Ahmedabad-Bhuj. <br />
+
+      <b>Amenities offered by Shree Travels:</b> Blankets, charging points, AC,
+      free pickup, emergency exit, fire extinguisher, live tracking.
+    </p>
+    <a href="{% url 'about' %}" class="btn">read more</a>
+  </div>
+</section>
+<!-- home about section ends -->
+
+<!-- home packages section starts  -->
+<section class="home-packages">
+  <h1 class="heading-title">our packages</h1>
+
+  <div class="box-container">
+    {% for package in packages %}
+    <div class="box">
+      <div class="image">
+        <img src="{{package.img.url}}" alt="" />
+      </div>
+      <div class="content">
+        <h3>{{package.ptitle}}</h3>
+        <h2>{{package.pdays}} days</h2>
+        <p>
+          Accomodation on double sharing <br> breakfast and dinner at hotel <br> Transfer and sightseeing by pvt vehicle as per program <br> Applicable hotel taxes
+        </p>
+        <a href=""><img src="/static/images/highlight.png" alt="" style="width: 40px" /></a>
+        <a href=""><img src="/static/images/meal.png" alt="" style="width: 40px" /></a>
+        <h1>Starting From</h1>  
+        <h3>{{package.price}}/-INR</h3>
+        {% if user.is_authenticated %}
+        <a href="{% url 'package_detail' package.id %}" class="btn">book now</a>
+        {% else %}
+        <a href="{% url 'signup' %}" class="btn" onclick="openPopup()">book now</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  <div class="load-more">
+    <a href="{% url 'package' %}" class="btn" id="">load more</a>
+  </div>
+</section>
+
+<!-- home packages section ends -->
+
+<!-- home offer section starts  -->
+
+<section class="home-offer">
+  <div class="content">
+    <h3>upto 20% off</h3>
+    <p>
+      "Explore more, save more! Enjoy a 20% discount on all tour packages today. Don’t miss out on your chance to create
+      unforgettable memories at an unbeatable price. Book now and embark on your next adventure with us!"
+    </p>
+    <a href="{%url 'package'%}" class="btn" onclick="openPopup()">book now</a>
+  </div>
+</section>
+<!-- home offer section ends -->
+{% endblock content %}

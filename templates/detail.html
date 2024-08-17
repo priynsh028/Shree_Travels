@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/detail.css">
+<!-- https://razorpay.me/@shree0208?amount=bd6mwPoVV2sRePhB8DGUcw%3D%3D -->
+<div class="detail-packages">
+   
+   <div class="box-container">
+      <div class="box-container-img">
+      <div class="box">
+         <div class="image">
+            <img src="/media/{{package.img}}" alt="">
+         </div>
+         <a href="{% url 'package_detail' package.id %}"></a>
+         <div class="content">
+            <h3>{{package.ptitle}}</h3>
+         </div>
+      </div>
+   </div>
+   
+      <div class="box-side">
+         <div class="main">
+            <h3>{{package.ptitle}}</h3>
+            <hr>
+            <h2>{{package.pdays}} days</h2>
+            <div class="hr"></div>
+            <p>Accomodation on double sharing <br> breakfast and dinner at hotel <br> Transfer and sightseeing by pvt vehicle as per program <br> Applicable hotel taxes</p>
+            <div class="hr"></div>
+            <div class="icon">
+               <img src="/static/images/highlight.png" alt="" style="width:40px">
+            <img src="/static/images/meal.png" alt="" style="width:40px">
+            </div>
+            <h4>Starting From</h4>
+            <h1>{{package.price}}/-INR</h1>
+            <a href="{% url 'book'  %}" class="btn">book now</a>
+         </div>
+      </div>
+   </div>
+
+   <div class="box-container">
+      <div class="box">
+         <div class="content">
+            <h3>Place:</h3>
+            <div class="hr"></div>
+            {{package.pdesc|safe}}
+         </div>
+         <div class="content">
+            <h3>Accomodation:</h3>
+            <div class="hr"></div>
+            {{package.acco|safe}}
+         </div>
+         <div class="meal" >
+            <div class="content">
+               <h3>Meal:</h3> 
+               <div class="hr"></div>
+               {{package.meal|safe}}
+            </div>
+         </div>
+         <div class="inc">
+         <div class="content">
+            <h3>Inclusion:</h3>
+            <div class="hr"></div>
+            {{package.inc|safe}}
+         </div> 
+      </div>
+      </div>
+   </div>
+</div>   
+
+{% endblock content %}

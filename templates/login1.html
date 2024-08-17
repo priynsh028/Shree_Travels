@@ -1,0 +1,23 @@
+<!-- {% extends "base.html" %} -->
+{% block content %}
+<link rel="stylesheet" href="/static/css/signup.css">
+<section class="booking">
+<div class="form-container">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+       <h3>login now</h3>
+       <!-- <?php
+       if(isset($error)){
+          foreach($error as $error){
+             echo '<span class="error-msg">'.$error.'</span>';
+          };
+       };
+       ?> -->
+       <input type="text" name="username"  placeholder="enter your username" required>
+       <input type="password" name="password" required placeholder="enter your password">
+       <input type="submit" name="submit" value="login now" class="form-btn">
+       <p>don't have an account? <a href="{% url 'signup' %}">register now</a></p>
+    </form>
+ </div>
+ </section>
+{% endblock content %}

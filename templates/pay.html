@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/payment.css">
+<section class="payment">
+    <h1 class="heading-title">payment details</h1>
+    <form action="{% url 'payment' %}" method="post" class="book-form">
+       {% csrf_token %}
+       <div class="flex">
+          <div class="inputBox">
+            <span>First name :</span>
+            <input type="text" placeholder="enter your name" name="name" value="{{book.name}}" readonly>
+         </div>
+          <!-- <div class="inputBox">
+             <span>email :</span>
+             <input type="email" placeholder="enter your email" name="email" readonly>
+          </div> -->
+          <div class="inputBox">
+             <span>mobile no :</span>
+             <input type="tel" placeholder="enter your number" name="mobileno" maxlength="10" readonly> 
+          </div>
+          <div class="inputBox">
+            <span>package name :</span>
+            <input type="text" placeholder="enter your name" name="name" value="{{book.name}}" readonly>
+         </div>
+          <div class="inputBox">
+             <span>Amount :</span>
+             <input type="number" placeholder="enter your address" name="amount" readonly>
+          </div>
+          <div class="inputBox">
+            <span>Booking ID :</span>
+            <input type="text"  name="bookingid" value="{{book.name}}" readonly>
+         </div>
+         <div class="inputBox">
+            <span>Payment Stutus :</span>
+            <input type="text"  name="bookingid" value="Success" readonly>
+         </div>
+       </div>
+
+       <h1>payment successfull</h1>
+       <h2>Thank you for your purchase! Your payment for the travel package has been successfully processed. We’re thrilled to have you on board and can’t wait to provide you with an unforgettable experience.
+      </h2>
+       <button type="button" class="btn"><a href="{% url 'home'%}">Back to Home</a></button>
+    </form>
+</section>
+{% endblock content %}

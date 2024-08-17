@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="booking">
+   <h1 class="heading-title">pay now!</h1>
+   <form action="" method="post" class="book-form">
+      {% csrf_token %}
+      <div class="flex">
+         <div class="inputBox">
+            <span>name :</span>
+            <input type="text" placeholder="enter your name" name="name" readonly>
+         </div>
+         <div class="inputBox">
+            <span>email :</span>
+            <input type="email" placeholder="enter your email" name="email" readonly>
+         </div>
+         <div class="inputBox">
+            <span>mobile no :</span>
+            <input type="tel" placeholder="enter your number" name="mobileno" maxlength="10" readonly>
+         </div>
+         <div class="inputBox">
+            <span>address :</span>
+            <input type="text" placeholder="enter your city" name="address" readonly>
+         </div>
+         <div class="inputBox">
+            <span>selected package:</span> <br>
+            <input type="text" name="package" id="" readonly>
+         </div>
+         <div class="inputBox">
+            <span>how many :</span>
+            <input type="number" placeholder="number of guests" name="guests" min="1" max="10" readonly>
+         </div>
+         <div class="inputBox">
+            <span>arrivals :</span>
+            <input type="date" name="arrivals" readonly>
+         </div>
+         <div class="inputBox">
+            <span>leaving :</span>
+            <input type="date" name="leaving" readonly>
+         </div>
+      </div>
+      <button type="submit" class="btn" id="rzp-button1"><a href="{% url 'payment' %}">Pay Now</a></button>
+   </form>
+   <form action="" method="post">
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      <script>
+         var options = {
+            "key": "rzp_test_SFxAgB0zcbJBxz", // Enter the Key ID generated from the Dashboard
+            "amount": "100",
+            "currency": "INR",
+            "name": "Shree travels",
+            "description": "Package Transaction",
+            "image": "/static/images/logo1.png",
+            "order_id": "{{ order_id }}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "callback_url": "http://127.0.0.1:8000/payment/",
+            "prefill": {
+               "name": "Priyansh Vanra",
+               "email": "Priyansh.v2016@gmail.com",
+               "contact": "7203016170"
+            },
+            "notes": {
+               "address": "Shree Travels"
+            },
+            "theme": {
+               "color": "#3399cc"
+            }
+         };
+         var rzp1 = new Razorpay(options);
+         document.getElementById('rzp-button1').onclick = function (e) {
+            rzp1.open();
+            e.preventDefault();
+         }
+      </script>
+   </form>
+</section>
+<!-- booking section ends -->
+{% endblock content %}
