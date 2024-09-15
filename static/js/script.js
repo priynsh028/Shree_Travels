@@ -40,16 +40,6 @@ var swiper = new Swiper(".reviews-slider", {
 let loadMoreBtn = document.querySelector('.packages .load-more .btn');
 let currentItem = 3;
 
-let popup1 = document.getElementById("popup");
-
-  function openPopup() {
-    popup.classList.add("open-popup");
-  }
-  function closePopup() {
-    popup.classList.remove("open-popup");
-  }
-
-
 loadMoreBtn.onclick = () =>{
    let boxes = [...document.querySelectorAll('.packages .box-container .box')];
    for (var i = currentItem; i < currentItem + 3; i++){

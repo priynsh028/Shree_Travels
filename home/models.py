@@ -4,19 +4,6 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.validators import MaxValueValidator
 from django.contrib.auth.models import User
 # Create your models here.
-class Book(models.Model):
-    name = models.CharField( max_length=122)
-    email = models.CharField(max_length=122)
-    mobileno =  models.CharField(max_length=15)
-    address = models.CharField( max_length=122)
-    location = models.CharField( max_length=122)
-    guests = models.IntegerField(validators=[MaxValueValidator(10)])
-    arrivals = models.DateField()
-    leaving  =  models.DateField()
-
-    def __str__(self):
-        return self.name
-    
 class Package(models.Model):
     ptitle = models.CharField( max_length=122,default="")
     pdays = models.CharField( max_length=122,default="")
@@ -30,10 +17,19 @@ class Package(models.Model):
     def __str__(self):
         return self.ptitle
 
+class Book(models.Model):
+    name = models.CharField( max_length=122)
+    email = models.CharField(max_length=122)
+    mobileno =  models.CharField(max_length=15)
+    address = models.CharField( max_length=122)
+    location = models.CharField( max_length=122)
+    guests = models.IntegerField(validators=[MaxValueValidator(10)])
+    arrivals = models.DateField()
+    leaving  =  models.DateField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    pprice = models.IntegerField(null=True)
+    order_id = models.CharField(max_length=122,blank=True,null=True)
+    paid = models.BooleanField(default=False)
 
-class Payment(models.Model):
-    payment_id = models.CharField(max_length=100,null=True,blank=True)
-    paid = models.BooleanField(default=False,null=True)
-
-    
-    
+    def __str__(self):
+        return self.name

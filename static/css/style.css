@@ -218,6 +218,16 @@ div.close {
   color: var(--black);
   display: none;
 }
+/* popup  */
+#popup {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
 
 /* marquee */
 marquee{
@@ -642,6 +652,10 @@ marquee{
   background: var(--light-bg);
 }
 
+.booking h2{
+  font-size:large;
+  text-align: center;
+}
 .booking .book-form .flex {
   display: flex;
   flex-wrap: wrap;
@@ -676,6 +690,9 @@ marquee{
   color: var(--light-black);
 }
 
+.booking .book-form .flex .inputBox input:read-only{
+  cursor: pointer;
+}
 .booking .book-form .flex .inputBox select{
   width: 100%;
   padding: 1.2rem 1.4rem;

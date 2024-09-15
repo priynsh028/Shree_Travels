@@ -10,12 +10,11 @@ urlpatterns = [
     path('logout/',views.logoutUser,name="logout"),
     path('about/',views.about,name="about"),
     path('package/<int:id>/',views.package_detail,name="package_detail"),
+    path('book/<int:id>/',views.book,name="book"),
     path('packages/',views.package,name="package"),
     path('Gallery/',views.Gallery,name="gallery"),
     path('signup/',views.signup,name="signup"),
     path('detail/',views.detail,name="detail"),
-    path('book/',views.book,name="book"),
-    path('payment/',views.payment,name="payment"),
-    
-
+    path('pay/',views.pay,name="pay"),
+    path('success/',views.success,name="success")
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -1,24 +1,24 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.models import User 
 from django.contrib.auth import logout,authenticate,login
-from home.models import Book,Package,Payment
+from home.models import Book,Package
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail,EmailMultiAlternatives
-import razorpay
 from django.views.decorators.csrf import csrf_exempt
-# priynsh 0208 priy PRIY@0208
+import razorpay
 
+# priynsh 0208 priy PRIY@0208
+client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 # Create your views here.
 def index(request):
     print(request.user)
     packages = Package.objects.all()[:3]
 
     if request.user.is_anonymous:
-    #     return redirect('/signup')
         messages.success(request,'Welcome Dear User, You have to login first for booking our packages')   
     else:
-        messages.success(request,'Welcome User')
+        messages.success(request,'Welcome to our travel portal! Book your package now and get ready for an unforgettable trip!')
     return render(request, 'index.html', {'packages':packages})
 
 def signup(request):
@@ -90,10 +90,17 @@ def detail(request):
 
 def package_detail(request,id):
     package = Package.objects.filter(id=id)
-    print(package)
     return render(request,"detail.html",{'package':package[0]})
 
-def book(request):
+def book(request,id):
+    packages = Package.objects.all()
+    package = Package.objects.filter(id=id)
+
+    context ={
+        'packages':packages,
+        'package':package[0],
+    }
+
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -103,31 +110,83 @@ def book(request):
         guests = request.POST.get('guests')
         arrivals = request.POST.get('arrivals')
         leaving = request.POST.get('leaving')
-        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID,settings.RAZORPAY_KEY_SECRET)) 
-        booking = Book(name=name,email=email,mobileno=mobileno,address=address,location=location,guests=guests,arrivals=arrivals,leaving=leaving)
+        pprice = request.POST.get('pprice')
+        # save
+        booking = Book(name=name,email=email,mobileno=mobileno,address=address,location=location,guests=guests,arrivals=arrivals,leaving=leaving,pprice=pprice,user=request.user)
         booking.save()
-    packages = Package.objects.all()
-    context ={
-        'packages':packages,
-    }
+
+        return redirect('pay')
     return render(request,"book.html",context)
 
+
+def pay(request):
+    book = Book.objects.filter(user=request.user).last() 
+    amount = int(book.pprice) 
+    print('package price is:',amount)
+    payment = client.order.create({
+        "amount": amount * 100,
+        "currency":"INR",
+        "payment_capture":"1"
+        })
+    print(payment)
+    order_id = payment['id']
+    print(order_id)
+    book.order_id = order_id
+    book.save()
+    booking = Book(order_id=order_id)
+    context = {
+        'book':book,
+        'payment':payment,
+        'order_id': order_id 
+    }
+    return render(request,"pay.html",context)
+
 @csrf_exempt
-def payment(request):
-    if request.method == 'POST':
-        payment_id=request.POST.get('razorpay_payment_id')
-        print(request.POST)
-        # a= request.POST
-        # order_id:""
-        # for key, val in a.items():
-        #     if key == 'razorpay_order_id':
-        #         order_id = val
-        #         break
-        # user = Payment.objects.filter(payment_id=order_id).first()
-        # user.paid = True
-        # user.save()
-        book = Book.objects.all()
-        context={
-            'book':book
-        }
-    return render(request,"pay.html")
+def success(request):
+    book_details = Book.objects.filter(user=request.user).last()  
+    book = Book.objects.filter(user=request.user).last()  
+    context = {
+        'book':book_details,
+    }
+    if request.method == "POST":
+        a = request.POST
+        print(a)
+        order_id = ''
+        for key , val in a.items():
+            if key == 'order_id':
+                order_id = val
+                break
+        # book = Book.objects.filter(order_id=order_id).first()
+        book_details.paid = True
+        book_details.save()
+
+        user = request.user
+        # Send Welcome mail
+        subject = "Package Payment Successful"
+        from_email = settings.EMAIL_HOST_USER
+        msg = f"""
+            Thank You <b>{user.username}</b>,
+            <br>
+            <h2>Payment Successful</h2>
+            <p>
+                Name: {book.name}<br>
+                Email Id: {book.email}<br>
+                Mobile no: {book.mobileno}<br>
+                Address: {book.address}<br>
+                Package: {book.location}<br>
+                Guests: {book.guests}<br>
+                Arrivals Date: {book.arrivals}<br>
+                Leaving Date: {book.leaving}<br>
+                Package Amount: {book.pprice}<br>
+                Payment Id: {book.order_id}<br>
+            </p>
+            <br>
+            Regards,<br>
+            Shree Travels.
+        """
+        recipient_list = [user.email]
+        msg = EmailMultiAlternatives(subject,msg,from_email,recipient_list)
+        msg.content_subtype='html'
+        msg.send()
+        print('Payment mail sent')
+    return render(request,"success.html",context)

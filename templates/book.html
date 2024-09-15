@@ -2,7 +2,7 @@
 {% block content %}
 <section class="booking">
    <h1 class="heading-title">book your trip!</h1>
-   <form action="{% url 'book'  %}" method="post" class="book-form">
+   <form action="{% url 'book' package.id %}" method="post" class="book-form">
       {% csrf_token %}
       <div class="flex">
          <div class="inputBox">
@@ -25,9 +25,10 @@
             <span>select package:</span> <br>
             <select id="location" name="location">
                {% for i in packages %}
-               <option value="{{ i.ptitle }}">{{ i.ptitle }}</option>
+               <option value="{{ i.ptitle}}">{{ i.ptitle }}</option>
                {% endfor %}
             </select>
+            <input type="number" name="pprice" value="{{package.price}}" hidden> 
          </div>
          <div class="inputBox">
             <span>how many :</span>
@@ -42,11 +43,13 @@
             <input type="date" name="leaving">
          </div>
          <div class="inputBox">
-            <input type="text" name="payment_id" value="{{order_id}}" hidden>
+            <input type="text" name="order_id" value="{{order_id}}" hidden >
+         </div>
+         <div class="inputBox">
+            <input type="text" name="payment" value="{{payment}}" hidden>
          </div>
       </div>
-      <button type="submit" class="btn"><a  href="{% url 'payment' %}">Book Now</a></button>
+      <button class="btn" type="submit"><a>Pay</a></button>
    </form>
 </section>
-<!-- booking section ends -->
 {% endblock content %}

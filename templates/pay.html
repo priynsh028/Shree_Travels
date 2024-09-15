@@ -1,45 +1,83 @@
 {% extends "base.html" %}
 {% block content %}
-<link rel="stylesheet" href="/static/css/payment.css">
-<section class="payment">
-    <h1 class="heading-title">payment details</h1>
-    <form action="{% url 'payment' %}" method="post" class="book-form">
-       {% csrf_token %}
-       <div class="flex">
-          <div class="inputBox">
-            <span>First name :</span>
-            <input type="text" placeholder="enter your name" name="name" value="{{book.name}}" readonly>
-         </div>
-          <!-- <div class="inputBox">
-             <span>email :</span>
-             <input type="email" placeholder="enter your email" name="email" readonly>
-          </div> -->
-          <div class="inputBox">
-             <span>mobile no :</span>
-             <input type="tel" placeholder="enter your number" name="mobileno" maxlength="10" readonly> 
-          </div>
-          <div class="inputBox">
-            <span>package name :</span>
-            <input type="text" placeholder="enter your name" name="name" value="{{book.name}}" readonly>
-         </div>
-          <div class="inputBox">
-             <span>Amount :</span>
-             <input type="number" placeholder="enter your address" name="amount" readonly>
-          </div>
-          <div class="inputBox">
-            <span>Booking ID :</span>
-            <input type="text"  name="bookingid" value="{{book.name}}" readonly>
+
+<section class="booking">
+   <h1 class="heading-title">Pay Now!</h1>
+   <h2>Dear {{book.name}}, kindly review and confirm your details before proceeding. <br>
+      Once confirmed, please continue to the payment to complete the process.</h2>
+   <form action="" method="post" class="book-form">
+      {% csrf_token %}
+      <div class="flex">
+         <div class="inputBox">
+            <span>name :</span>
+            <input type="text" name="name" readonly value="{{book.name}}">
          </div>
          <div class="inputBox">
-            <span>Payment Stutus :</span>
-            <input type="text"  name="bookingid" value="Success" readonly>
+            <span>email :</span>
+            <input type="email" name="email" readonly value="{{book.email}}">
          </div>
-       </div>
-
-       <h1>payment successfull</h1>
-       <h2>Thank you for your purchase! Your payment for the travel package has been successfully processed. We’re thrilled to have you on board and can’t wait to provide you with an unforgettable experience.
-      </h2>
-       <button type="button" class="btn"><a href="{% url 'home'%}">Back to Home</a></button>
-    </form>
+         <div class="inputBox">
+            <span>mobile no :</span>
+            <input type="tel" name="mobileno" maxlength="10" readonly value="{{book.mobileno}}">
+         </div>
+         <div class="inputBox">
+            <span>address :</span>
+            <input type="text" name="address" readonly value="{{book.address}}">
+         </div>
+         <div class="inputBox">
+            <span>Selected package:</span> <br>
+            <input type="text" name="package" id="" readonly value="{{book.location}}">
+         </div>
+         <div class="inputBox">
+            <span>how many :</span>
+            <input type="number" name="guests" min="1" max="10" readonly value="{{book.guests}}">
+         </div>
+         <div class="inputBox">
+            <span>arrivals :</span>
+            <input type="text" name="arrivals" readonly value="{{book.arrivals}}">
+         </div>
+         <div class="inputBox">
+            <span>leaving :</span>
+            <input type="text" name="leaving" readonly value="{{book.leaving}}">
+         </div>
+         <div class="inputBox">
+            <span>amount :</span>
+            <input type="number" readonly value="{{book.pprice}}">
+         </div>
+      </div>   
+      <button id="rzp-button1" class="btn" name="amount">Pay Now</button>
+   </form>
+   <form action="{% url 'pay' %}" method="post">
+   {% csrf_token %}
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+   <script>
+      var options = {
+         "key": "rzp_test_SFxAgB0zcbJBxz", 
+         "amount": "{{book.pprice}}",
+         "currency": "INR",   
+         "name": "Shree Travels",
+         "description": "Package Transaction",
+         "image": "/static/images/logo1.png",
+         "order_id": "{{order_id}}", 
+         "callback_url": "http://127.0.0.1:8000/success/",
+         "prefill": {
+            "name": "{{book.name}}",
+            "email": "{{book.email}}",
+            "contact": "{{book.mobileno}}"
+         },
+         "notes": {
+            "address": "Ghodasar, Ahmedabad-50"
+         },
+         "theme": {
+            "color": "#8e44ad"
+         }
+      };
+      var rzp1 = new Razorpay(options);
+      document.getElementById('rzp-button1').onclick = function (e) {
+         rzp1.open();
+         e.preventDefault();
+      }
+   </script>
+   </form>
 </section>
 {% endblock content %}

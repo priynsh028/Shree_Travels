@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="booking">
+    <h1 class="heading-title">Payment Successfull!</h1>
+    <form action="" method="post" class="book-form">
+        {% csrf_token %}
+        <div class="flex">
+           <div class="inputBox">
+              <span>name :</span>
+              <input type="text" name="name" readonly value="{{book.name}}">
+           </div>
+           <div class="inputBox">
+              <span>email :</span>
+              <input type="email" name="email" readonly value="{{book.email}}">
+              
+           </div>
+           <div class="inputBox">
+              <span>mobile no :</span>
+              <input type="tel" name="mobileno" maxlength="10" readonly  value="{{book.mobileno}}">
+
+           </div> 
+           <div class="inputBox">
+              <span>address :</span>
+              <input type="text" name="address" readonly value="{{book.address}}"> 
+           </div>
+           <div class="inputBox">
+              <span>Selected package:</span> <br>
+              <input type="text" name="package" id="" readonly value="{{book.location}}">
+           </div>
+           <div class="inputBox">
+              <span>how many :</span>
+              <input type="number" name="guests" min="1" max="10" readonly value="{{book.guests}}">
+           </div>
+           <div class="inputBox">
+              <span>arrivals :</span>
+              <input type="text" name="arrivals" readonly value="{{book.arrivals}}">
+           </div>
+           <div class="inputBox">
+              <span>leaving :</span>
+              <input type="text" name="leaving" readonly value="{{book.leaving}}">
+           </div>
+
+        </div>
+        <button class="btn"><a href="{% url 'home' %}">Home</a></button>
+     </form>
+</form>
+</section>
+{% endblock content%}
